@@ -1,21 +1,88 @@
 package uz.travelAgency.bot.registeredTelBot;
 
+import lombok.SneakyThrows;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Contact;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import uz.travelAgency.user.entity.UserEntity;
+import uz.travelAgency.user.entity.UserStep;
+
+import static uz.travelAgency.utils.Utils.*;
 
 public class TravelAgencyBot extends TelegramLongPollingBot {
+
+    @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        if(update.hasMessage()){
-            try {
-                execute(new SendMessage(update.getMessage().getChatId().toString(), update.getMessage().getText()));
-            } catch (TelegramApiException e) {
-                throw new RuntimeException(e);
+        if(update.hasMessage()) {
+            Message message = update.getMessage();
+            start(message);
+        }
+    }
+
+
+
+    private void start(Message message){
+        Long chatId = message.getChatId();
+        String text = message.getText();
+
+        UserEntity user = userService.getById(chatId);
+        UserStep step = UserStep.START;
+
+        if(user != null){
+
+            step = user.getStep();
+            step = figureOutUserStep(step, text, chatId);
+
+        } else if(message.hasContact()){
+
+            Contact c = message.getContact();
+            UserEntity userEntity = UserEntity.builder()
+                    .phoneNumber(c.getPhoneNumber())
+                    .step(UserStep.REGISTERED)
+                    .id(chatId)
+                    .build();
+            userService.createUser(userEntity);
+            step = UserStep.REGISTERED;
+
+        }
+
+        executeUserSteps(step, chatId);
+
+    }
+
+    private UserStep figureOutUserStep(UserStep step, String text, Long chatId) {
+        switch (step){
+            case REGISTERED, MENU -> {
+                step = botService.identifyUserStep(step, chatId, text);
+            }
+        }
+        return step;
+    }
+
+    @SneakyThrows
+    private void executeUserSteps(UserStep step, Long chatId) {
+        switch (step){
+            case START -> {
+                execute(botService.register(chatId));
+            }
+            case REGISTERED, MENU -> {
+
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public String getBotUsername() {
