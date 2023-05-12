@@ -8,6 +8,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import uz.travelAgency.user.entity.UserEntity;
 import uz.travelAgency.user.entity.UserStep;
 
+import java.util.concurrent.Executors;
+
 import static uz.travelAgency.utils.Utils.*;
 
 public class TravelAgencyBot extends TelegramLongPollingBot {
@@ -15,10 +17,12 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        if(update.hasMessage()) {
-            Message message = update.getMessage();
-            start(message);
-        }
+        Executors.newCachedThreadPool().execute(() -> {
+            if(update.hasMessage()) {
+                Message message = update.getMessage();
+                start(message);
+            }
+        });
     }
 
 
@@ -57,6 +61,9 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
             case REGISTERED, MENU -> {
                 step = botService.identifyUserStep(step, chatId, text);
             }
+            case EUROPE -> {
+
+            }
         }
         return step;
     }
@@ -68,14 +75,10 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
                 execute(botService.register(chatId));
             }
             case REGISTERED, MENU -> {
-
+                execute(botService.menu(chatId));
             }
         }
     }
-
-
-
-
 
 
 
