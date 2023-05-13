@@ -1,5 +1,6 @@
 package uz.travelAgency.bot.service;
 
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -21,6 +22,7 @@ public class BotServiceButtons {
         replyKeyboardMarkup.setKeyboard(List.of(row));
         return replyKeyboardMarkup;
     }
+
 
     public ReplyKeyboardMarkup menuButtons(){
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
