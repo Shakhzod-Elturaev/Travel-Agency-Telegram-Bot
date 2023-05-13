@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Germany",
+    "continent": "EUROPE"
+  },
+  {
+    "name": "France",
+    "continent": "EUROPE"
+  },
+  {
+    "name": "Spain",
+    "continent": "EUROPE"
+  },
+  {
+    "name": "Portugal",
+    "continent": "EUROPE"
+  },
+  {
+    "name": "England",
+    "continent": "EUROPE"
+  },
+  {
+    "name": "China",
+    "continent": "ASIA"
+  },
+  {
+    "name": "Japan",
+    "continent": "ASIA"
+  },
+  {
+    "name": "U.A.E",
+    "continent": "ASIA"
+  },
+  {
+    "name": "Saudi Arabia",
+    "continent": "ASIA"
+  },
+  {
+    "name": "South Korea",
+    "continent": "ASIA"
+  },
+  {
+    "name": "U.S",
+    "continent": "AMERICA"
+  },
+  {
+    "name": "Canada",
+    "continent": "AMERICA"
+  },
+  {
+    "name": "Chile",
+    "continent": "AMERICA"
+  },
+  {
+    "name": "Brazil",
+    "continent": "AMERICA"
+  },
+  {
+    "name": "Argentina",
+    "continent": "AMERICA"
+  },
+  {
+    "name": "Egypt",
+    "continent": "AFRICA"
+  },
+  {
+    "name": "Zambia",
+    "continent": "AFRICA"
+  },
+  {
+    "name": "Kenya",
+    "continent": "AFRICA"
+  },
+  {
+    "name": "Botswana",
+    "continent": "AFRICA"
+  },
+  {
+    "name": "Tanzania",
+    "continent": "AFRICA"
+  }
+]

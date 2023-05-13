@@ -1,20 +1,12 @@
 package uz.travelAgency.bot.service;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import uz.travelAgency.user.entity.UserStep;
 
-import java.security.Key;
-import java.util.ArrayList;
-import java.util.List;
 
 import static uz.travelAgency.utils.Utils.*;
 
 public class BotService {
-
-    private final BotServiceButtons botServiceButtons = new BotServiceButtons();
 
 
     public SendMessage register(Long chatId){
