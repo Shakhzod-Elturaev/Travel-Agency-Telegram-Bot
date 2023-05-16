@@ -19,10 +19,14 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
             if(update.hasMessage()) {
                 Message message = update.getMessage();
                 start(message);
+
+
             } else if(update.hasCallbackQuery()){
                 CallbackQuery callbackQuery = update.getCallbackQuery();
                 Message message = update.getMessage();
                 startWithCallBackQuery(callbackQuery, message);
+
+
             }
         });
     }
