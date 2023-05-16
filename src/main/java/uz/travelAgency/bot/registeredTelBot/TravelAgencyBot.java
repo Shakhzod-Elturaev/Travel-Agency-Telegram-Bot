@@ -2,9 +2,7 @@ package uz.travelAgency.bot.registeredTelBot;
 
 import lombok.SneakyThrows;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.objects.Contact;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.*;
 import uz.travelAgency.user.entity.UserEntity;
 import uz.travelAgency.user.entity.UserStep;
 
@@ -21,10 +19,22 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
             if(update.hasMessage()) {
                 Message message = update.getMessage();
                 start(message);
+            } else if(update.hasCallbackQuery()){
+                CallbackQuery callbackQuery = update.getCallbackQuery();
+                Message message = update.getMessage();
+                startWithCallBackQuery(callbackQuery, message);
             }
         });
     }
 
+    private void startWithCallBackQuery(CallbackQuery callbackQuery, Message message) {
+        String data = callbackQuery.getData();
+        Long chatId = message.getChatId();
+
+        UserEntity user = userService.getById(chatId);
+
+        UserStep step = user.getStep();
+    }
 
 
     private void start(Message message){
@@ -37,7 +47,7 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
         if(user != null){
 
             step = user.getStep();
-            step = figureOutUserStep(step, text, chatId);
+            step = figureOutUserStep(step, message, chatId);
 
         } else if(message.hasContact()){
 
@@ -56,13 +66,11 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
 
     }
 
-    private UserStep figureOutUserStep(UserStep step, String text, Long chatId) {
+    @SneakyThrows
+    private UserStep figureOutUserStep(UserStep step, Message message, Long chatId) {
         switch (step){
             case REGISTERED, MENU -> {
-                step = botService.identifyUserStep(step, chatId, text);
-            }
-            case EUROPE -> {
-
+                step = botService.identifyUserStep(step, chatId, message.getText());
             }
         }
         return step;
@@ -76,6 +84,10 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
             }
             case REGISTERED, MENU -> {
                 execute(botService.menu(chatId));
+            }
+            case EUROPE, ASIA, AFRICA, AMERICA -> {
+                execute(botService.removeMenu(chatId));
+                execute(botService.travelType(chatId));
             }
         }
     }

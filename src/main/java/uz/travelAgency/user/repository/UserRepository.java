@@ -18,6 +18,7 @@ public interface UserRepository {
     UserEntity getById(Long id);
 
     void updateUser(Long id, UserStep step);
+    void updateUser(UserEntity user);
 
     ArrayList<UserEntity> getAll();
 

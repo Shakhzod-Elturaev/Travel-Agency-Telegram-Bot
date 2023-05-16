@@ -13,6 +13,7 @@ public interface UserService {
     void deleteById(Long id);
 
     void updateUser(Long chatId, UserStep step);
+    void updateUser(UserEntity user);
 
     ArrayList<UserEntity> getAllUsers();
 }

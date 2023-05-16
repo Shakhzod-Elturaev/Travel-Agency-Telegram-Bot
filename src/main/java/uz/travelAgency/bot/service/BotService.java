@@ -1,8 +1,12 @@
 package uz.travelAgency.bot.service;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import uz.travelAgency.user.entity.UserStep;
 
+
+import java.io.File;
 
 import static uz.travelAgency.utils.Utils.*;
 
@@ -25,12 +29,22 @@ public class BotService {
         return sendMessage;
     }
 
-    public SendMessage travelType(Long chatId){
+    public SendMessage removeMenu(Long chatId){
         SendMessage sendMessage = new SendMessage(
                 chatId.toString(),
-                "Choose the travel type!");
-        sendMessage.setReplyMarkup(botServiceButtons.travelTypeButtons());
+                "\uD83C\uDF0E"
+        );
+        sendMessage.setReplyMarkup(botServiceButtons.deleteMenu());
         return sendMessage;
+    }
+
+    public SendPhoto travelType(Long chatId){
+        SendPhoto sendPhoto = new SendPhoto(
+                chatId.toString(),
+                new InputFile(new File("/home/shakhzod/Pictures/1000_F_300101300_FevTg0mqZG5S1g94Dk2pzzGW6vnVgUDl.jpg")));
+        sendPhoto.setCaption("Choose vehicle to travel");
+        sendPhoto.setReplyMarkup(botServiceButtons.travelTypeButtons());
+        return sendPhoto;
     }
 
 
