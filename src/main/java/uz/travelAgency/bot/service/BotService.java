@@ -34,6 +34,7 @@ public class BotService {
                 chatId.toString(),
                 "\uD83C\uDF0E"
         );
+
         sendMessage.setReplyMarkup(botServiceButtons.deleteMenu());
         return sendMessage;
     }
