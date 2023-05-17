@@ -41,6 +41,20 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
+    public void updateUser(UserEntity user) {
+        int i = 0;
+        ArrayList<UserEntity> all = getAll();
+        for (UserEntity u : all) {
+            if(Objects.equals(u.getId(), user.getId())){
+                all.set(i, user);
+                break;
+            }
+            i++;
+        }
+        writeToFile(all);
+    }
+
+    @Override
     public ArrayList<UserEntity> getAll() {
         return readFromFile();
     }

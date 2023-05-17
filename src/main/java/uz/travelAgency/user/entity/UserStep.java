@@ -7,5 +7,6 @@ public enum UserStep {
     ASIA,
     AFRICA,
     AMERICA,
+    SELECTED_COUNTRY,
     MENU
 }
