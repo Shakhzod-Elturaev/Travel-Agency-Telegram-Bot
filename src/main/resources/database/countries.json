@@ -1,82 +1,82 @@
 [
   {
-    "name": "Germany",
+    "name": "\uD83C\uDDE9\uD83C\uDDEA Germany",
     "continent": "EUROPE"
   },
   {
-    "name": "France",
+    "name": "\uD83C\uDDEB\uD83C\uDDF7 France",
     "continent": "EUROPE"
   },
   {
-    "name": "Spain",
+    "name": "\uD83C\uDDEA\uD83C\uDDF8 Spain",
     "continent": "EUROPE"
   },
   {
-    "name": "Portugal",
+    "name": "\uD83C\uDDF5\uD83C\uDDF9 Portugal",
     "continent": "EUROPE"
   },
   {
-    "name": "England",
+    "name": "\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F England",
     "continent": "EUROPE"
   },
   {
-    "name": "China",
+    "name": "\uD83C\uDDE8\uD83C\uDDF3 China",
     "continent": "ASIA"
   },
   {
-    "name": "Japan",
+    "name": "\uD83C\uDDEF\uD83C\uDDF5 Japan",
     "continent": "ASIA"
   },
   {
-    "name": "U.A.E",
+    "name": "\uD83C\uDDE6\uD83C\uDDEA U.A.E",
     "continent": "ASIA"
   },
   {
-    "name": "Saudi Arabia",
+    "name": "\uD83C\uDDF8\uD83C\uDDE6 Saudi Arabia",
     "continent": "ASIA"
   },
   {
-    "name": "South Korea",
+    "name": "\uD83C\uDDF0\uD83C\uDDF7 South Korea",
     "continent": "ASIA"
   },
   {
-    "name": "U.S",
+    "name": "\uD83C\uDDFA\uD83C\uDDF8 U.S",
     "continent": "AMERICA"
   },
   {
-    "name": "Canada",
+    "name": "\uD83C\uDDE8\uD83C\uDDE6 Canada",
     "continent": "AMERICA"
   },
   {
-    "name": "Chile",
+    "name": "\uD83C\uDDE8\uD83C\uDDF1 Chile",
     "continent": "AMERICA"
   },
   {
-    "name": "Brazil",
+    "name": "\uD83C\uDDE7\uD83C\uDDF7 Brazil",
     "continent": "AMERICA"
   },
   {
-    "name": "Argentina",
+    "name": "\uD83C\uDDE6\uD83C\uDDF7 Argentina",
     "continent": "AMERICA"
   },
   {
-    "name": "Egypt",
+    "name": "\uD83C\uDDEA\uD83C\uDDEC Egypt",
     "continent": "AFRICA"
   },
   {
-    "name": "Zambia",
+    "name": "\uD83C\uDDFF\uD83C\uDDF2 Zambia",
     "continent": "AFRICA"
   },
   {
-    "name": "Kenya",
+    "name": "\uD83C\uDDF0\uD83C\uDDEA Kenya",
     "continent": "AFRICA"
   },
   {
-    "name": "Botswana",
+    "name": "\uD83C\uDDE7\uD83C\uDDFC Botswana",
     "continent": "AFRICA"
   },
   {
-    "name": "Tanzania",
+    "name": "\uD83C\uDDF9\uD83C\uDDFF Tanzania",
     "continent": "AFRICA"
   }
 ]

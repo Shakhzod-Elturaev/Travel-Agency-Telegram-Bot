@@ -6,7 +6,11 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRem
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+import uz.travelAgency.country.entity.CountryEntity;
+import uz.travelAgency.country.service.CountryService;
+import uz.travelAgency.country.service.CountryServiceImpl;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +81,38 @@ public class BotServiceButtons {
 
         buttons.setKeyboard(rows);
         return buttons;
+    }
+
+    public InlineKeyboardMarkup countryButtons(ArrayList<CountryEntity> countries){
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = new ArrayList<>();
+
+        int i = 1;
+        for (CountryEntity c : countries) {
+            InlineKeyboardButton button = new InlineKeyboardButton(c.getName());
+            button.setCallbackData(c.getContinent() + "_" + i);
+            row.add(button);
+
+            if(i % 3 == 0){
+                rows.add(row);
+                row = new ArrayList<>();
+            }
+            i++;
+        }
+        if (!row.isEmpty()) {
+            rows.add(row);
+        }
+
+        row = new ArrayList<>();
+        InlineKeyboardButton button = new InlineKeyboardButton("⬅️");
+        button.setCallbackData("BACK");
+        row.add(button);
+        rows.add(row);
+
+        inlineKeyboardMarkup.setKeyboard(rows);
+        return inlineKeyboardMarkup;
     }
 
 
