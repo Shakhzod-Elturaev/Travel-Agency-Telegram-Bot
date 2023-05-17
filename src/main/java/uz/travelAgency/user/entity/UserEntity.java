@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class UserEntity {
+
     private String phoneNumber;
     private Long id;
     private UserStep step;
