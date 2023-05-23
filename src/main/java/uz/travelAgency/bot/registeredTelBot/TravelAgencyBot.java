@@ -41,7 +41,7 @@ public class TravelAgencyBot extends TelegramLongPollingBot {
         Long chatId = message.getChatId();
 
         switch (data){
-            case "EUROPE_1" -> {
+            case "EUROPE_1", "EUROPE_2", "EUROPE_3", "EUROPE_4", "EUROPE_5" -> {
                 execute(botService.deleteMessage(chatId, message.getMessageId()));
                 execute(botService.travelType(chatId));
             }
