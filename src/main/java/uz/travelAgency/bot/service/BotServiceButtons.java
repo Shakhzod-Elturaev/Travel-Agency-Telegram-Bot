@@ -79,6 +79,12 @@ public class BotServiceButtons {
         row.add(button);
         rows.add(row);
 
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton("↩️ Back to Menu");
+        button.setCallbackData("BACK");
+        row.add(button);
+        rows.add(row);
+
         buttons.setKeyboard(rows);
         return buttons;
     }
